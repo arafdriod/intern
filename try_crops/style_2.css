@@ -1,0 +1,124 @@
+
+.container {
+    padding-top: 20px;
+}
+
+body {
+    background-color:#e5fadb; /* Light grey background to match the image */
+    color: #333;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Styles for filter buttons */
+.filter-buttons-wrapper .btn {
+    border: 1px solid #ccc;
+    border-radius: 0; /* Square buttons like in the image */
+    margin-right: -1px; /* To make them look connected */
+    background-color: #fff;
+    color: #333;
+    padding: 8px 20px;
+    font-size: 1rem;
+}
+
+.filter-buttons-wrapper .btn:hover {
+    background-color: #e2e6ea;
+}
+
+.filter-buttons-wrapper .btn.active {
+    background-color: #dc3545; /* Red background for active button */
+    color: white;
+    border-color: #dc3545;
+    z-index: 1; /* Ensure active button border is visible */
+}
+
+/* Gallery Item Styling */
+.gallery-item {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.gallery-item a {
+    text-decoration: none; 
+    color: inherit; 
+}
+.crop-item a:hover h3 {
+    color: #28a745; 
+}
+
+.gallery-image-wrapper {
+    width: 100%; 
+    padding-bottom: 100%; 
+    position: relative; 
+    overflow: hidden; 
+    border-radius: 10%; 
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    /* background-color: #fff; */
+}
+
+.gallery-image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center; 
+    border-radius: 10%; 
+}
+
+.gallery-item h3 {
+    font-size: 1.1em;
+    color: #333;
+    margin-top: 5px; 
+    text-transform: capitalize; 
+}
+.gallery-item:hover {
+    transform: translateY(-5px);
+  }
+.btn_1{
+    margin-left: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 10px 20px;
+    color: black;
+}
+.fa-solid{
+    color:green;
+    position: relative;
+    right: 2px;
+}
+
+/* Scroll to top button from the image - basic styling */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #dc3545; /* Red background */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Circular button */
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* Basic responsive adjustments */
+@media (max-width: 767px) {
+    .filter-buttons-wrapper .btn {
+        padding: 6px 10px; /* Smaller padding for buttons on small screens */
+        font-size: 0.9rem;
+    }
+    .gallery-image-wrapper {
+        height: 120px; /* Smaller image height on small screens */
+    }
+    .gallery-item h3 {
+        font-size: 1rem;
+    }
+}

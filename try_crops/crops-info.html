@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitter Gourd Detail</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        /* Global Box Sizing for better layout control */
+        html {
+            box-sizing: border-box;
+        }
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            width: 100%;
+            overflow-x: hidden; /* Prevents horizontal scrolling */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container for the page content */
+        .page-container {
+            max-width: 1200px;
+            margin: 20px auto; /* Center the main content area */
+            padding: 0 15px; /* Add some horizontal padding */
+        }
+
+        /* Main content styling within the page */
+        .bitter-gourd-detail-page {
+            background-color:rgba(219, 255, 219, 0.365);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        /* Typography */
+        .main-title, .section-title {
+            color: #28a745; /* Green color for titles */
+            font-weight: bold;
+            margin-bottom: 25px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #e9ecef; /* Light grey underline */
+        }
+
+        .main-title {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-top: 40px;
+        }
+
+        .featured-image {
+            border-radius: 12px; /* Slightly more rounded for the main image */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 100%; /* Ensure it's responsive */
+            height: auto;
+            display: block;
+        }
+
+        .description-text {
+            line-height: 1.8;
+            color: #555;
+            font-size: 1.05em;
+        }
+
+        /* Managements Section Styling */
+        .management-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around; /* Distribute boxes evenly */
+        }
+
+        .management-box {
+            background-color: #f1f7ee; /* Light green background */
+            color: #28a745; /* Darker green text */
+            border: 2px solid #28a745; /* Green border */
+            border-radius: 10px;
+            padding: 25px 15px; /* Increase padding for larger click area */
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            width: 100%; /* Make button fill its column */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .management-box:hover {
+            background-color: #28a745; /* Green background on hover */
+            color: #fff; /* White text on hover */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transform: translateY(-3px); /* Slight lift effect */
+        }
+
+        /* Pests, Weeds, Diseases and Disorders Styling */
+        .category-box {
+            background-color: #fcfcfc;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            min-height: 180px; /* Ensure consistent height for boxes */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+        }
+
+        .category-box h4 {
+            color: #333;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .category-box h4 i {
+            color: #28a745; /* Green icon */
+            margin-left: 10px;
+        }
+
+        .tag-button {
+            background-color: #e6f7ea; /* Very light green for tags */
+            color: #218838; /* Darker green for tag text */
+            border: 1px solid #c8e6c9;
+            border-radius: 20px;
+            padding: 8px 15px;
+            margin: 5px;
+            display: inline-block; /* Allows multiple tags on one line */
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: default; /* Not clickable like a button */
+            transition: background-color 0.2s ease;
+        }
+
+        .tag-button:hover {
+            background-color: #d4edda;
+        }
+
+        /* Crop Seed Varieties Table Styling */
+        .custom-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .custom-table th,
+        .custom-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+        }
+
+        .custom-table thead th {
+            background-color: #28a745; /* Green header */
+            color: white;
+            font-weight: bold;
+        }
+
+        .custom-table tbody tr:nth-child(even) {
+            background-color: #f2fafa; /* Light alternating rows */
+        }
+
+        .custom-table tbody tr:hover {
+            background-color: #e9f5e9; /* Hover effect */
+        }
+
+        /* Crop Details List Styling */
+        .crop-details-list {
+            background-color: #fcfcfc;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .detail-item {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex; /* For aligning strong and span */
+            justify-content: space-between; /* Pushes value to right */
+            align-items: center;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-item strong {
+            color: #333;
+            min-width: 180px; /* Align titles */
+            font-weight: 600;
+        }
+
+        .detail-item span {
+            color: #555;
+            flex-grow: 1; /* Allow span to take remaining space */
+            text-align: right;
+        }
+
+        /* Modal specific styling */
+        .modal-header {
+            background-color: #28a745;
+            color: white;
+            border-bottom: 1px solid #218838;
+        }
+
+        .modal-header .btn-close {
+            filter: invert(1) grayscale(100%) brightness(200%); /* Makes close button white */
+        }
+
+        .modal-content {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .modal-body {
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .modal-body ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 0;
+        }
+
+        .modal-body li {
+            margin-bottom: 5px;
+        }
+        .image-left{
+            position: relative;
+            top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        <div class="bitter-gourd-detail-page">
+            <h1 class="main-title">Bitter gourd Detail</h1>
+
+            <div class="row mb-4">
+                <div class="col-12 col-md-6" data-aos="fade-right" data-aos-duration="1000">
+                    <img src="https://cdn.i-scmp.com/sites/default/files/d8/images/methode/2019/11/24/1e9530b0-0ea3-11ea-afcd-7b308be3ba45_image_hires_191958.jpg" class="img-fluid featured-image" alt="Bitter Gourd Detail">
+                </div>
+                <div class="col-12 col-md-6 image-left" data-aos="fade-left" data-aos-duration="1000"  >
+                    <p class="description-text">
+                        Bitter gourd is a tropical vine renowned for its distinct taste and health benefits. Widely cultivated in Asia, Africa, and the Caribbean, its fruit is a culinary staple. This page offers insights into its diverse varieties, cultivation methods, and essential management practices.
+                    </p>
+            
+                    <h5 class="mt-4 mb-3" style="color: #28a745; font-weight: bold;">Quick Facts:</h5>
+                    <div class="row">
+                        <div class="col-6 mb-2">
+                            <div class="p-2 border rounded" style="background-color: #f1f7ee; border-color: #c8e6c9 !important;">
+                                <strong>Category:</strong> <span class="float-end">Agriculture</span>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="p-2 border rounded" style="background-color: #f1f7ee; border-color: #c8e6c9 !important;">
+                                <strong>Climate:</strong> <span class="float-end">Tropical</span>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="p-2 border rounded" style="background-color: #f1f7ee; border-color: #c8e6c9 !important;">
+                                <strong>Water:</strong> <span class="float-end">Irrigated</span>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="p-2 border rounded" style="background-color: #f1f7ee; border-color: #c8e6c9 !important;">
+                                <strong>Season:</strong> <span class="float-end">Kharif / Rainy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title" data-aos="fade-up" data-aos-duration="1000">Managements</h2>
+            <div class="row mb-5 management-boxes" data-aos="fade-up" data-aos-duration="1000">
+                <div class="col-12 col-md-4 mb-3">
+                    <button class="management-box" data-bs-toggle="modal" data-bs-target="#plantNutritionModal">
+                        Plant Nutrition
+                    </button>
+                </div>
+                <div class="col-12 col-md-4 mb-3">
+                    <button class="management-box" data-bs-toggle="modal" data-bs-target="#cropManagementModal">
+                        Crop Management
+                    </button>
+                </div>
+                <div class="col-12 col-md-4 mb-3">
+                    <button class="management-box" data-bs-toggle="modal" data-bs-target="#othersManagementModal">
+                        Others Management
+                    </button>
+                </div>
+            </div>
+
+            <h2 class="section-title"  data-aos="fade-up" data-aos-duration="1000">Pests, Weeds, Diseases and Disorders</h2>
+            <div class="row mb-5"  data-aos="fade-up" data-aos-duration="1000">
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="category-box">
+                        <h4>Sucking Pests <i class="fa-solid fa-bug"></i></h4>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <span class="tag-button" data-bs-toggle="modal" data-bs-target="#miteModal">Mite</span>
+                            <span class="tag-button" data-bs-toggle="modal" data-bs-target="#aphidModal">Aphid</span>
+                            <span class="tag-button" data-bs-toggle="modal" data-bs-target="#fruitFlyModal">Fruit Fly</span>
+                            <span class="tag-button" data-bs-toggle="modal" data-bs-target="#fleaBeetleModal">Flea beetle</span>
+                            <span class="tag-button" data-bs-toggle="modal" data-bs-target="#whiteFlyModal">White Fly</span>
+                            <span class="tag-button" data-bs-toggle="modal" data-bs-target="#rodentsModal">Rodents</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="category-box">
+                        <h4>Fungal Diseases <i class="fa-solid fa-leaf"></i></h4>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <span class="tag-button" data-bs-toggle="modal" data-bs-target="#powderyMildewModal">Powdery Mildew</span>
+                            <span class="tag-button" data-bs-toggle="modal" data-bs-target="#downyMildewModal">Downy Mildew</span>
+                            <span class="tag-button" data-bs-toggle="modal" data-bs-target="#blightFungalModal">Blight</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="category-box">
+                        <h4>Bacterial Diseases <i class="fa-solid fa-bacteria"></i></h4>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <span class="tag-button" data-bs-toggle="modal" data-bs-target="#bacterialLeafSpotModal">Bacterial Leaf Spot</span>
+                            <span class="tag-button" data-bs-toggle="modal" data-bs-target="#wiltBacterialModal">Wilt</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="category-box">
+                        <h4>Viral Diseases <i class="fa-solid fa-virus"></i></h4>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <span class="tag-button" data-bs-toggle="modal" data-bs-target="#yellowMosaicModal">Yellow Mosaic</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="category-box">
+                        <h4>Weeds <i class="fa-solid fa-seedling"></i></h4>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <span class="tag-button" data-bs-toggle="modal" data-bs-target="#weedsModal">Weeds</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="category-box">
+                        <h4>Nutrient <i class="fa-solid fa-flask"></i></h4>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <span class="tag-button" data-bs-toggle="modal" data-bs-target="#chillingFrostInjuryModal">Chilling frost injury</span>
+                            <span class="tag-button" data-bs-toggle="modal" data-bs-target="#airPollutionInjuryModal">Air pollution injury</span>
+                            <span class="tag-button" data-bs-toggle="modal" data-bs-target="#blossomEndInjuryModal">Blossom end injury</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title"  data-aos="fade-up" data-aos-duration="1000">Bitter gourd Crop Seed Varieties</h2>
+            <div class="table-responsive mb-5"  data-aos="fade-up" data-aos-duration="1000">
+                <table class="table table-bordered table-striped custom-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Seed Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>LOCAL SEED</td>
+                            <td>1 kg / acre</td>
+                        </tr>
+                        <tr>
+                            <td>FAISAL ABAD LONG (LOCAL / OPV)</td>
+                            <td>600-700 grams per acre</td>
+                        </tr>
+                        <tr>
+                            <td>PALEE (HYBRID)</td>
+                            <td>600-700 grams per acre</td>
+                        </tr>
+                        <tr>
+                            <td>GUL-F1</td>
+                            <td>1K g/acre</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="section-title"  data-aos="fade-up" data-aos-duration="1000">Crop Details</h2>
+            <div class="crop-details-list mb-5"  data-aos="fade-up" data-aos-duration="1000">
+                <div class="detail-item">
+                    <strong>Major/Minor:</strong> <span>Major</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Temporary/Permanent:</strong> <span>Temporary</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Category:</strong> <span>Agriculture Extension</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Type:</strong> <span>Vegetables</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Crop Climate Title:</strong> <span>Tropical</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Crop Water Method Title:</strong> <span>Irrigated</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Crop Duration:</strong> <span>Perennial</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Crop Economic Title:</strong> <span>Food Crop</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Crop Growing Season:</strong> <span>Kharif / Rainy / Monsoon Crops</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="plantNutritionModal" tabindex="-1" aria-labelledby="plantNutritionModalLabel" aria-hidden="true"  data-aos="fade-up" data-aos-duration="1000" >
+        <div class="modal-dialog modal-dialog-centered modal-lg"> <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="plantNutritionModalLabel">Plant Nutrition Management</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Details about Plant Nutrition for Bitter Gourd would go here. This section covers the essential nutrients required for healthy growth and optimal yield of bitter gourd plants.</p>
+                    <h6>Key Aspects:</h6>
+                    <ul>
+                        <li><strong>Macro-nutrients (N, P, K):</strong> Nitrogen for leafy growth, Phosphorus for root development and flowering, Potassium for overall plant vigor and disease resistance.</li>
+                        <li><strong>Micro-nutrients (Fe, Mn, Zn, B, Cu, Mo):</strong> Essential for various metabolic processes, enzyme activation, and overall plant health.</li>
+                        <li><strong>Fertilization Schedule:</strong> Recommendations for basal application and subsequent top-dressings at different growth stages (e.g., pre-planting, flowering, fruiting).</li>
+                        <li><strong>Soil Health Management:</strong> Importance of organic matter, soil testing, and pH balance for nutrient availability.</li>
+                        <li><strong>Foliar Feeding:</strong> When and how to apply liquid fertilizers to leaves for quick nutrient uptake.</li>
+                    </ul>
+                    <p>Understanding and addressing the nutritional needs of bitter gourd is crucial for maximizing productivity and fruit quality.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cropManagementModal" tabindex="-1" aria-labelledby="cropManagementModalLabel" aria-hidden="true"  data-aos="fade-up" data-aos-duration="1000">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cropManagementModalLabel">Crop Management</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This section provides comprehensive information on general crop management practices for Bitter Gourd, ensuring efficient cultivation and higher yields.</p>
+                    <h6>Key Aspects:</h6>
+                    <ul>
+                        <li><strong>Land Preparation:</strong> Tilling, leveling, and enrichment with organic manure to create a suitable seedbed.</li>
+                        <li><strong>Planting Methods and Spacing:</strong> Direct sowing vs. transplanting, recommended row-to-row and plant-to-plant distances for optimal growth.</li>
+                        <li><strong>Irrigation Practices:</strong> Watering schedules, methods (drip irrigation, furrow irrigation), and water conservation techniques. Bitter gourd requires consistent moisture.</li>
+                        <li><strong>Trellising/Staking:</strong> Essential for bitter gourd as it is a vine; supporting the plants improves air circulation, reduces disease incidence, and makes harvesting easier.</li>
+                        <li><strong>Pruning:</strong> Removing unwanted branches and leaves to promote better fruiting and plant vigor.</li>
+                        <li><strong>Harvesting Guidelines:</strong> When and how to harvest fruits for best quality, typically when they are young and tender.</li>
+                        <li><strong>Crop Rotation Strategies:</strong> Practicing crop rotation to break pest and disease cycles and maintain soil fertility.</li>
+                        <li><strong>Weed Control:</strong> Manual weeding, mulching, or appropriate herbicide application.</li>
+                    </ul>
+                    <p>Effective crop management leads to healthier plants and more productive harvests.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="othersManagementModal" tabindex="-1" aria-labelledby="othersManagementModalLabel" aria-hidden="true"  data-aos="fade-up" data-aos-duration="1000">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="othersManagementModalLabel">Other Management Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This category covers additional crucial management details that contribute to the overall success and sustainability of Bitter Gourd cultivation.</p>
+                    <h6>Key Aspects:</h6>
+                    <ul>
+                        <li><strong>Integrated Pest Management (IPM):</strong> Combining biological, cultural, physical, and chemical tools to manage pests in an economically and environmentally sound manner.</li>
+                        <li><strong>Disease Prevention and Control:</strong> Strategies beyond specific disease treatments, including sanitation, use of resistant varieties, and proper spacing.</li>
+                        <li><strong>Post-Harvest Handling:</strong> Techniques for harvesting, cleaning, sorting, packing, and storing bitter gourd to extend shelf life and maintain quality.</li>
+                        <li><strong>Market Strategies:</strong> Tips for selling produce, understanding market demands, and connecting with buyers.</li>
+                        <li><strong>Water Conservation:</strong> Techniques like mulching, drip irrigation, and rainwater harvesting to optimize water use.</li>
+                        <li><strong>Environmental Factors:</strong> Managing effects of temperature, humidity, and light on bitter gourd growth.</li>
+                        <li><strong>Specific Regional Practices:</strong> Any unique cultivation methods or challenges specific to different geographic locations.</li>
+                    </ul>
+                    <p>A holistic approach to these management aspects ensures long-term viability and profitability.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- ========================================================= -->
+    <!-- MODALS for Pests, Weeds, Diseases, and Disorders -->
+    <!-- ========================================================= -->
+
+    <!-- Mite Modal -->
+    <div class="modal fade" id="miteModal" tabindex="-1" aria-labelledby="miteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg"  data-aos="fade-up" data-aos-duration="1000">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="miteModalLabel">Mite - Sucking Pest</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Disease Type:</h6>
+                    <p>Mites are tiny arachnids that feed on plant sap, causing stippling, yellowing, and distortion of leaves. They often thrive in hot, dry conditions and can lead to severe crop damage if unchecked.</p>
+                    <h6>Control:</h6>
+                    <ul>
+                        <li><strong>Biological Control:</strong> Introduce predatory mites or insects.</li>
+                        <li><strong>Chemical Control:</strong> Apply appropriate miticides, ensuring full coverage of the plant's underside.</li>
+                        <li><strong>Cultural Practices:</strong> Maintain adequate humidity, remove affected leaves, and practice good sanitation.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Aphid Modal -->
+    <div class="modal fade" id="aphidModal" tabindex="-1" aria-labelledby="aphidModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg"  data-aos="fade-up" data-aos-duration="1000">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="aphidModalLabel">Aphid - Sucking Pest</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Disease Type:</h6>
+                    <p>Aphids are small, soft-bodied insects that cluster on new growth and the undersides of leaves, sucking plant sap. They excrete honeydew, which can lead to sooty mold, and can transmit viral diseases.</p>
+                    <h6>Control:</h6>
+                    <ul>
+                        <li><strong>Biological Control:</strong> Encourage natural predators like ladybugs and lacewings.</li>
+                        <li><strong>Organic Control:</strong> Spray with neem oil or insecticidal soap.</li>
+                        <li><strong>Physical Removal:</strong> Rinse plants with strong jets of water.</li>
+                        <li><strong>Chemical Control:</strong> Use systemic or contact insecticides when infestation is severe.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fruit Fly Modal -->
+    <div class="modal fade" id="fruitFlyModal" tabindex="-1" aria-labelledby="fruitFlyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="fruitFlyModalLabel">Fruit Fly - Pest</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Disease Type:</h6>
+                    <p>Fruit flies lay eggs in developing fruits, and the hatched maggots feed on the pulp, causing the fruit to rot or become unmarketable. This can lead to significant yield losses.</p>
+                    <h6>Control:</h6>
+                    <ul>
+                        <li><strong>Sanitation:</strong> Remove and destroy infested or fallen fruits promptly.</li>
+                        <li><strong>Trapping:</strong> Use pheromone traps or protein bait traps to monitor and reduce populations.</li>
+                        <li><strong>Bagging:</strong> Cover individual fruits with paper or cloth bags to prevent egg-laying.</li>
+                        <li><strong>Insecticides:</strong> Apply bait sprays or targeted insecticides if necessary.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flea Beetle Modal -->
+    <div class="modal fade" id="fleaBeetleModal" tabindex="-1" aria-labelledby="fleaBeetleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="fleaBeetleModalLabel">Flea Beetle - Pest</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Disease Type:</h6>
+                    <p>Flea beetles cause small, round holes (shot-hole damage) in leaves as they feed. Severe infestations can stunt plant growth and reduce yields, especially in young plants.</p>
+                    <h6>Control:</h6>
+                    <ul>
+                        <li><strong>Row Covers:</strong> Protect young plants with floating row covers.</li>
+                        <li><strong>Trap Cropping:</strong> Plant a more attractive crop nearby to draw flea beetles away.</li>
+                        <li><strong>Neem Oil:</strong> Apply neem oil as a deterrent and mild insecticide.</li>
+                        <li><strong>Crop Rotation:</strong> Avoid planting susceptible crops in the same area year after year.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- White Fly Modal -->
+    <div class="modal fade" id="whiteFlyModal" tabindex="-1" aria-labelledby="whiteFlyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="whiteFlyModalLabel">White Fly - Sucking Pest</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Disease Type:</h6>
+                    <p>Whiteflies are tiny, winged insects that feed on plant sap from the undersides of leaves. They weaken plants, excrete sticky honeydew (leading to sooty mold), and are significant vectors for viral diseases.</p>
+                    <h6>Control:</h6>
+                    <ul>
+                        <li><strong>Yellow Sticky Traps:</strong> Use these to monitor and catch adult whiteflies.</li>
+                        <li><strong>Insecticidal Soap/Neem Oil:</strong> Apply regularly to control populations.</li>
+                        <li><strong>Biological Control:</strong> Release natural enemies like Encarsia formosa wasps.</li>
+                        <li><strong>Reflective Mulches:</strong> Can deter whiteflies from landing on plants.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodents Modal -->
+    <div class="modal fade" id="rodentsModal" tabindex="-1" aria-labelledby="rodentsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rodentsModalLabel">Rodents - Pest</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Disease Type:</h6>
+                    <p>Rodents (like rats and mice) can cause significant damage to crops by feeding on fruits, stems, and roots. They can also burrow and disturb planting areas.</p>
+                    <h6>Control:</h6>
+                    <ul>
+                        <li><strong>Sanitation:</strong> Keep the area around crops clean and free of debris that can provide shelter.</li>
+                        <li><strong>Trapping:</strong> Use snap traps or live traps.</li>
+                        <li><strong>Bait Stations:</strong> Implement rodenticides in secure bait stations, especially away from edible parts of plants.</li>
+                        <li><strong>Physical Barriers:</strong> Use fences or mesh to protect susceptible areas.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Powdery Mildew Modal -->
+    <div class="modal fade" id="powderyMildewModal" tabindex="-1" aria-labelledby="powderyMildewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="powderyMildewModalLabel">Powdery Mildew - Fungal Disease</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Disease Type:</h6>
+                    <p>Powdery mildew appears as white, powdery spots on leaves, stems, and fruits. It can reduce photosynthesis, leading to stunted growth, reduced yields, and premature defoliation.</p>
+                    <h6>Control:</h6>
+                    <ul>
+                        <li><strong>Fungicides:</strong> Apply sulfur-based or systemic fungicides.</li>
+                        <li><strong>Cultural Practices:</strong> Ensure good air circulation, avoid overhead irrigation late in the day, and plant resistant varieties.</li>
+                        <li><strong>Organic Sprays:</strong> Use baking soda solution or milk spray as a preventative measure.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Downy Mildew Modal -->
+    <div class="modal fade" id="downyMildewModal" tabindex="-1" aria-labelledby="downyMildewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="downyMildewModalLabel">Downy Mildew - Fungal Disease</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Disease Type:</h6>
+                    <p>Downy mildew manifests as yellow angular spots on the upper leaf surface, with fuzzy grayish-purple growth on the corresponding undersides. It thrives in cool, moist conditions and can cause rapid defoliation.</p>
+                    <h6>Control:</h6>
+                    <ul>
+                        <li><strong>Fungicides:</strong> Apply specific fungicides targeting downy mildew.</li>
+                        <li><strong>Cultural Practices:</strong> Improve air circulation, avoid overhead watering, and remove infected plant parts.</li>
+                        <li><strong>Resistant Varieties:</strong> Plant varieties known for resistance to downy mildew.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blight Modal (Fungal) -->
+    <div class="modal fade" id="blightFungalModal" tabindex="-1" aria-labelledby="blightFungalModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="blightFungalModalLabel">Blight - Fungal Disease</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Disease Type:</h6>
+                    <p>Blight is a rapid and widespread browning, death, and wilting of plant tissues such as leaves, flowers, twigs, or stems. Fungal blight can lead to significant crop loss.</p>
+                    <h6>Control:</h6>
+                    <ul>
+                        <li><strong>Fungicides:</strong> Use appropriate fungicides as soon as symptoms appear.</li>
+                        <li><strong>Sanitation:</strong> Remove and destroy infected plant material to prevent spread.</li>
+                        <li><strong>Cultural Practices:</strong> Ensure proper spacing for air circulation and avoid overwatering.</li>
+                        <li><strong>Resistant Varieties:</strong> Plant varieties known for blight resistance.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bacterial Leaf Spot Modal -->
+    <div class="modal fade" id="bacterialLeafSpotModal" tabindex="-1" aria-labelledby="bacterialLeafSpotModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bacterialLeafSpotModalLabel">Bacterial Leaf Spot - Bacterial Disease</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Disease Type:</h6>
+                    <p>Bacterial leaf spot causes small, water-soaked lesions on leaves that enlarge and turn dark brown or black, often with a yellow halo. Severe infections can lead to defoliation.</p>
+                    <h6>Control:</h6>
+                    <ul>
+                        <li><strong>Copper-based Sprays:</strong> Apply bactericides containing copper.</li>
+                        <li><strong>Resistant Varieties:</strong> Plant resistant cultivars if available.</li>
+                        <li><strong>Sanitation:</strong> Remove and destroy infected plant debris.</li>
+                        <li><strong>Avoid Overhead Watering:</strong> Water at the base of plants to minimize leaf wetness.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wilt Modal (Bacterial) -->
+    <div class="modal fade" id="wiltBacterialModal" tabindex="-1" aria-labelledby="wiltBacterialModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="wiltBacterialModalLabel">Wilt - Bacterial Disease</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Disease Type:</h6>
+                    <p>Bacterial wilt causes sudden wilting of plant leaves and stems, even when soil moisture is adequate. It typically leads to the rapid collapse and death of the plant due to bacterial blockage of water-conducting tissues.</p>
+                    <h6>Control:</h6>
+                    <ul>
+                        <li><strong>Resistant Varieties:</strong> Use wilt-resistant varieties.</li>
+                        <li><strong>Crop Rotation:</strong> Implement long crop rotations to reduce bacterial presence in the soil.</li>
+                        <li><strong>Sanitation:</strong> Remove and destroy infected plants and debris.</li>
+                        <li><strong>Soil Solarization:</strong> Can help reduce soil-borne pathogens.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Yellow Mosaic Modal (Viral) -->
+    <div class="modal fade" id="yellowMosaicModal" tabindex="-1" aria-labelledby="yellowMosaicModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="yellowMosaicModalLabel">Yellow Mosaic - Viral Disease</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Disease Type:</h6>
+                    <p>Yellow mosaic virus causes distinct yellow and green mosaic patterns on leaves, stunted growth, and deformed fruits. It is often transmitted by insect vectors like whiteflies and aphids.</p>
+                    <h6>Control:</h6>
+                    <ul>
+                        <li><strong>Vector Control:</strong> Manage insect populations (whiteflies, aphids) that transmit the virus.</li>
+                        <li><strong>Resistant Varieties:</strong> Plant virus-resistant or tolerant varieties.</li>
+                        <li><strong>Sanitation:</strong> Remove and destroy infected plants immediately to prevent spread.</li>
+                        <li><strong>Weed Control:</strong> Manage weeds that can host the virus or its vectors.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Weeds Modal -->
+    <div class="modal fade" id="weedsModal" tabindex="-1" aria-labelledby="weedsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="weedsModalLabel">Weeds - Plant Competition</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Disease Type:</h6>
+                    <p>Weeds compete with crops for water, nutrients, sunlight, and space, significantly reducing crop yield and quality. They can also host pests and diseases.</p>
+                    <h6>Control:</h6>
+                    <ul>
+                        <li><strong>Manual Weeding:</strong> Hand pulling or hoeing.</li>
+                        <li><strong>Mulching:</strong> Apply organic or synthetic mulches to suppress weed growth.</li>
+                        <li><strong>Herbicides:</strong> Use pre-emergent or post-emergent herbicides selectively.</li>
+                        <li><strong>Crop Rotation:</strong> Helps disrupt weed life cycles.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chilling Frost Injury Modal -->
+    <div class="modal fade" id="chillingFrostInjuryModal" tabindex="-1" aria-labelledby="chillingFrostInjuryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="chillingFrostInjuryModalLabel">Chilling Frost Injury - Nutrient/Environmental Disorder</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Disease Type:</h6>
+                    <p>Chilling injury occurs when sensitive plants are exposed to temperatures above freezing but below 10-15°C (50-59°F). Frost injury occurs when temperatures drop below freezing, causing ice crystals to form within plant cells, leading to tissue damage and death.</p>
+                    <h6>Control:</h6>
+                    <ul>
+                        <li><strong>Site Selection:</strong> Plant in frost-free areas or protected locations.</li>
+                        <li><strong>Row Covers/Cloches:</strong> Provide physical protection for young plants.</li>
+                        <li><strong>Overhead Irrigation (for frost):</strong> Sprinkling water before and during frost can prevent freezing.</li>
+                        <li><strong>Delayed Planting:</strong> Plant after the risk of frost has passed.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Air Pollution Injury Modal -->
+    <div class="modal fade" id="airPollutionInjuryModal" tabindex="-1" aria-labelledby="airPollutionInjuryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="airPollutionInjuryModalLabel">Air Pollution Injury - Environmental Disorder</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Disease Type:</h6>
+                    <p>Air pollution, caused by gases like ozone, sulfur dioxide, or nitrogen oxides, can lead to visible injury symptoms on plant leaves, including chlorosis (yellowing), necrosis (dead spots), or stippling. It impairs photosynthesis and overall plant health.</p>
+                    <h6>Control:</h6>
+                    <ul>
+                        <li><strong>Site Selection:</strong> Avoid planting sensitive crops near known sources of industrial pollution.</li>
+                        <li><strong>Resistant Varieties:</strong> Choose varieties known to be more tolerant to air pollutants.</li>
+                        <li><strong>Good Agronomic Practices:</strong> Healthy, well-nourished plants are often more resilient.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blossom End Injury Modal -->
+    <div class="modal fade" id="blossomEndInjuryModal" tabindex="-1" aria-labelledby="blossomEndInjuryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="blossomEndInjuryModalLabel">Blossom End Injury - Nutrient Disorder (Calcium Deficiency)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Disease Type:</h6>
+                    <p>Blossom end rot is a common physiological disorder, primarily caused by a localized calcium deficiency in the fruit, often exacerbated by inconsistent watering or rapid growth. It manifests as a dark, sunken lesion on the blossom end of the fruit.</p>
+                    <h6>Control:</h6>
+                    <ul>
+                        <li><strong>Consistent Watering:</strong> Maintain even soil moisture, avoiding extreme wet/dry cycles.</li>
+                        <li><strong>Adequate Calcium:</strong> Ensure sufficient calcium in the soil. Soil test if unsure.</li>
+                        <li><strong>Mulching:</strong> Helps retain soil moisture.</li>
+                        <li><strong>Avoid Over-fertilization:</strong> Especially with high nitrogen, which can interfere with calcium uptake.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
+</body>
+</html>
