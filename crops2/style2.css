@@ -1,0 +1,200 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color:rgb(45, 63, 49); /* Light background to match the image */
+    overflow-x: hidden;
+}
+
+.hero-section {
+    background-color:rgb(45, 63, 49); /* Dark background for hero */
+    color: #fff;
+    padding: 100px 0;
+    text-align: center;
+}
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #ffc107; /* Yellow heading */
+}
+.hero-section p {
+    font-size: 1.25rem;
+    margin-top: 20px;
+}
+.hero-image {
+    max-width: 100%;
+    height: 316px;
+    border-radius: 10px;
+}
+
+.about-section {
+    padding: 80px 0;
+    background-color: #f0f0f0; /* Light grey background */
+}
+.about-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.about-text h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+}
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.features-section {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 80px 0;
+    text-align: center;
+}
+.feature-item {
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+}
+.feature-item:hover {
+    transform: translateY(-10px);
+}
+.feature-item i {
+    font-size: 3rem;
+    color: #ffc107;
+    margin-bottom: 20px;
+}
+.feature-item h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.feature-item p {
+    color: #bbb;
+}
+
+.gallery-section {
+    padding: 80px 0;
+    background-color: #f8f8f8;
+}
+.gallery-item img {
+    width: 100%;
+    height: 250px; /* Fixed height for consistency */
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+.gallery-item img:hover {
+    transform: scale(1.03);
+}
+
+.statistics-section {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 80px 0;
+    text-align: center;
+}
+.statistics-section h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffc107;
+    margin-bottom: 50px;
+}
+.statistic-item {
+    margin-bottom: 30px;
+}
+.statistic-item i {
+    font-size: 3.5rem;
+    color: #ffc107;
+    margin-bottom: 15px;
+}
+.statistic-item h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+.statistic-item p {
+    font-size: 1.1rem;
+    color: #bbb;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.cta-section {
+    background-color: #ffc107;
+    background-image: url("https://www.shutterstock.com/image-photo/blossoming-rapeseed-field-beautiful-sky-260nw-2289365597.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: #333;
+    padding: 80px 0;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.cta-section h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.cta-section p {
+    font-size: 1.25rem;
+    margin-bottom: 2px;
+    color:#1a1a1a;
+}
+.btn-cta {
+    background-color: #1a1a1a;
+    color: #ffc107;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.btn-cta:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+
+.contact-section {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 80px 0;
+}
+.contact-info p {
+    margin-bottom: 10px;
+}
+.contact-info i {
+    color: #ffc107;
+    margin-right: 10px;
+}
+.contact-form .form-control {
+    background-color: #333;
+    border: 1px solid #555;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+.contact-form .form-control::placeholder {
+    color: #aaa;
+}
+.contact-form .btn-primary {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #1a1a1a;
+    font-weight: 600;
+    padding: 12px 30px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.contact-form .btn-primary:hover {
+    background-color: #e0a800;
+    border-color: #e0a800;
+}
+

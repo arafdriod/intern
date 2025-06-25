@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitter Gourd Detail</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        /* Global Box Sizing for better layout control */
+        html {
+            box-sizing: border-box;
+        }
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            width: 100%;
+            overflow-x: hidden; /* Prevents horizontal scrolling */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container for the page content */
+        .page-container {
+            max-width: 1200px;
+            margin: 20px auto; /* Center the main content area */
+            padding: 0 15px; /* Add some horizontal padding */
+        }
+
+        /* Main content styling within the page */
+        .bitter-gourd-detail-page {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        /* Typography */
+        .main-title, .section-title {
+            color: #28a745; /* Green color for titles */
+            font-weight: bold;
+            margin-bottom: 25px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #e9ecef; /* Light grey underline */
+        }
+
+        .main-title {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-top: 40px;
+        }
+
+        .featured-image {
+            border-radius: 12px; /* Slightly more rounded for the main image */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 100%; /* Ensure it's responsive */
+            height: auto;
+            display: block;
+        }
+
+        .description-text {
+            line-height: 1.8;
+            color: #555;
+            font-size: 1.05em;
+        }
+
+        /* Managements Section Styling */
+        .management-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around; /* Distribute boxes evenly */
+        }
+
+        .management-box {
+            background-color: #f1f7ee; /* Light green background */
+            color: #28a745; /* Darker green text */
+            border: 2px solid #28a745; /* Green border */
+            border-radius: 10px;
+            padding: 25px 15px; /* Increase padding for larger click area */
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            width: 100%; /* Make button fill its column */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .management-box:hover {
+            background-color: #28a745; /* Green background on hover */
+            color: #fff; /* White text on hover */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transform: translateY(-3px); /* Slight lift effect */
+        }
+
+        /* Pests, Weeds, Diseases and Disorders Styling */
+        .category-box {
+            background-color: #fcfcfc;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            min-height: 180px; /* Ensure consistent height for boxes */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+        }
+
+        .category-box h4 {
+            color: #333;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .category-box h4 i {
+            color: #28a745; /* Green icon */
+            margin-left: 10px;
+        }
+
+        .tag-button {
+            background-color: #e6f7ea; /* Very light green for tags */
+            color: #218838; /* Darker green for tag text */
+            border: 1px solid #c8e6c9;
+            border-radius: 20px;
+            padding: 8px 15px;
+            margin: 5px;
+            display: inline-block; /* Allows multiple tags on one line */
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: default; /* Not clickable like a button */
+            transition: background-color 0.2s ease;
+        }
+
+        .tag-button:hover {
+            background-color: #d4edda;
+        }
+
+        /* Crop Seed Varieties Table Styling */
+        .custom-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .custom-table th,
+        .custom-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+        }
+
+        .custom-table thead th {
+            background-color: #28a745; /* Green header */
+            color: white;
+            font-weight: bold;
+        }
+
+        .custom-table tbody tr:nth-child(even) {
+            background-color: #f2fafa; /* Light alternating rows */
+        }
+
+        .custom-table tbody tr:hover {
+            background-color: #e9f5e9; /* Hover effect */
+        }
+
+        /* Crop Details List Styling */
+        .crop-details-list {
+            background-color: #fcfcfc;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .detail-item {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex; /* For aligning strong and span */
+            justify-content: space-between; /* Pushes value to right */
+            align-items: center;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-item strong {
+            color: #333;
+            min-width: 180px; /* Align titles */
+            font-weight: 600;
+        }
+
+        .detail-item span {
+            color: #555;
+            flex-grow: 1; /* Allow span to take remaining space */
+            text-align: right;
+        }
+
+        /* Modal specific styling */
+        .modal-header {
+            background-color: #28a745;
+            color: white;
+            border-bottom: 1px solid #218838;
+        }
+
+        .modal-header .btn-close {
+            filter: invert(1) grayscale(100%) brightness(200%); /* Makes close button white */
+        }
+
+        .modal-content {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .modal-body {
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .modal-body ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 0;
+        }
+
+        .modal-body li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        <div class="bitter-gourd-detail-page">
+            <h1 class="main-title">Bitter gourd Detail</h1>
+
+            <div class="row mb-4">
+                <div class="col-12 col-md-6">
+                    <img src="https://cdn.i-scmp.com/sites/default/files/d8/images/methode/2019/11/24/1e9530b0-0ea3-11ea-afcd-7b308be3ba45_image_hires_191958.jpg" class="img-fluid featured-image" alt="Bitter Gourd Detail">
+                </div>
+                <div class="col-12 col-md-6 description-text">
+                    <p>Bitter gourd is a tropical and subtropical vine of the family Cucurbitaceae, widely grown in Asia, Africa and the Caribbean for its edible fruit. Its many varieties differ substantially in the shape and bitterness of the fruit. This herbaceous, tendril-bearing vine grows up to 5 m (16 ft) in length. It bears simple, alternate leaves 4-12 cm (1.6-4.7 in) across, with three to seven deeply separated lobes. When the fruit is fully ripe, it turns orange and mushy, and splits into segments which curl back dramatically to expose seeds covered in bright red pulp.</p>
+                    <p>In Pakistan, known as karela in Urdu speaking areas and Bangladesh, known as korola in Bengali bitter gourd is often cooked with onions, red chili powder, turmeric powder, salt, coriander powder and a pinch of cumin seeds. Another dish in Pakistan calls for whole, unpeeled bitter melon to be boiled and then stuffed with cooked minced beef, served with hot tandoori bread, naan, chapati, or with khichri (a mixture of lentils and rice).</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Managements</h2>
+            <div class="row mb-5 management-boxes">
+                <div class="col-12 col-md-4 mb-3">
+                    <button class="management-box" data-bs-toggle="modal" data-bs-target="#plantNutritionModal">
+                        Plant Nutrition
+                    </button>
+                </div>
+                <div class="col-12 col-md-4 mb-3">
+                    <button class="management-box" data-bs-toggle="modal" data-bs-target="#cropManagementModal">
+                        Crop Management
+                    </button>
+                </div>
+                <div class="col-12 col-md-4 mb-3">
+                    <button class="management-box" data-bs-toggle="modal" data-bs-target="#othersManagementModal">
+                        Others Management
+                    </button>
+                </div>
+            </div>
+
+            <h2 class="section-title">Pests, Weeds, Diseases and Disorders</h2>
+            <div class="row mb-5">
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="category-box">
+                        <h4>Sucking Pests <i class="fa-solid fa-bug"></i></h4>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <span class="tag-button">Mite</span>
+                            <span class="tag-button">Aphid</span>
+                            <span class="tag-button">Fruit Fly</span>
+                            <span class="tag-button">Flea beetle</span>
+                            <span class="tag-button">White Fly</span>
+                            <span class="tag-button">Rodents</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="category-box">
+                        <h4>Fungal Diseases <i class="fa-solid fa-leaf"></i></h4>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <span class="tag-button">Powdery Mildew</span>
+                            <span class="tag-button">Downy Mildew</span>
+                            <span class="tag-button">Viral diseases</span>
+                            <span class="tag-button">Blight</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="category-box">
+                        <h4>Bacterial Diseases <i class="fa-solid fa-bacteria"></i></h4>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <span class="tag-button">Bacterial Leaf Spot</span>
+                            <span class="tag-button">Wilt</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="category-box">
+                        <h4>Viral Diseases <i class="fa-solid fa-virus"></i></h4>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <span class="tag-button">Yellow Mosaic</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="category-box">
+                        <h4>Weeds <i class="fa-solid fa-seedling"></i></h4>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <span class="tag-button">Weeds</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="category-box">
+                        <h4>Nutrient <i class="fa-solid fa-flask"></i></h4>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <span class="tag-button">Chilling frost injury</span>
+                            <span class="tag-button">Air pollution injury</span>
+                            <span class="tag-button">Blossom end injury</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Bitter gourd Crop Seed Varieties</h2>
+            <div class="table-responsive mb-5">
+                <table class="table table-bordered table-striped custom-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Seed Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>LOCAL SEED</td>
+                            <td>1 kg / acre</td>
+                        </tr>
+                        <tr>
+                            <td>FAISAL ABAD LONG (LOCAL / OPV)</td>
+                            <td>600-700 grams per acre</td>
+                        </tr>
+                        <tr>
+                            <td>PALEE (HYBRID)</td>
+                            <td>600-700 grams per acre</td>
+                        </tr>
+                        <tr>
+                            <td>GUL-F1</td>
+                            <td>1K g/acre</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="section-title">Crop Details</h2>
+            <div class="crop-details-list mb-5">
+                <div class="detail-item">
+                    <strong>Major/Minor:</strong> <span>Major</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Temporary/Permanent:</strong> <span>Temporary</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Category:</strong> <span>Agriculture Extension</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Type:</strong> <span>Vegetables</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Crop Climate Title:</strong> <span>Tropical</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Crop Water Method Title:</strong> <span>Irrigated</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Crop Duration:</strong> <span>Perennial</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Crop Economic Title:</strong> <span>Food Crop</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Crop Growing Season:</strong> <span>Kharif / Rainy / Monsoon Crops</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="plantNutritionModal" tabindex="-1" aria-labelledby="plantNutritionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg"> <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="plantNutritionModalLabel">Plant Nutrition Management</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Details about Plant Nutrition for Bitter Gourd would go here. This section covers the essential nutrients required for healthy growth and optimal yield of bitter gourd plants.</p>
+                    <h6>Key Aspects:</h6>
+                    <ul>
+                        <li><strong>Macro-nutrients (N, P, K):</strong> Nitrogen for leafy growth, Phosphorus for root development and flowering, Potassium for overall plant vigor and disease resistance.</li>
+                        <li><strong>Micro-nutrients (Fe, Mn, Zn, B, Cu, Mo):</strong> Essential for various metabolic processes, enzyme activation, and overall plant health.</li>
+                        <li><strong>Fertilization Schedule:</strong> Recommendations for basal application and subsequent top-dressings at different growth stages (e.g., pre-planting, flowering, fruiting).</li>
+                        <li><strong>Soil Health Management:</strong> Importance of organic matter, soil testing, and pH balance for nutrient availability.</li>
+                        <li><strong>Foliar Feeding:</strong> When and how to apply liquid fertilizers to leaves for quick nutrient uptake.</li>
+                    </ul>
+                    <p>Understanding and addressing the nutritional needs of bitter gourd is crucial for maximizing productivity and fruit quality.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cropManagementModal" tabindex="-1" aria-labelledby="cropManagementModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cropManagementModalLabel">Crop Management</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This section provides comprehensive information on general crop management practices for Bitter Gourd, ensuring efficient cultivation and higher yields.</p>
+                    <h6>Key Aspects:</h6>
+                    <ul>
+                        <li><strong>Land Preparation:</strong> Tilling, leveling, and enrichment with organic manure to create a suitable seedbed.</li>
+                        <li><strong>Planting Methods and Spacing:</strong> Direct sowing vs. transplanting, recommended row-to-row and plant-to-plant distances for optimal growth.</li>
+                        <li><strong>Irrigation Practices:</strong> Watering schedules, methods (drip irrigation, furrow irrigation), and water conservation techniques. Bitter gourd requires consistent moisture.</li>
+                        <li><strong>Trellising/Staking:</strong> Essential for bitter gourd as it is a vine; supporting the plants improves air circulation, reduces disease incidence, and makes harvesting easier.</li>
+                        <li><strong>Pruning:</strong> Removing unwanted branches and leaves to promote better fruiting and plant vigor.</li>
+                        <li><strong>Harvesting Guidelines:</strong> When and how to harvest fruits for best quality, typically when they are young and tender.</li>
+                        <li><strong>Crop Rotation Strategies:</strong> Practicing crop rotation to break pest and disease cycles and maintain soil fertility.</li>
+                        <li><strong>Weed Control:</strong> Manual weeding, mulching, or appropriate herbicide application.</li>
+                    </ul>
+                    <p>Effective crop management leads to healthier plants and more productive harvests.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="othersManagementModal" tabindex="-1" aria-labelledby="othersManagementModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="othersManagementModalLabel">Other Management Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This category covers additional crucial management details that contribute to the overall success and sustainability of Bitter Gourd cultivation.</p>
+                    <h6>Key Aspects:</h6>
+                    <ul>
+                        <li><strong>Integrated Pest Management (IPM):</strong> Combining biological, cultural, physical, and chemical tools to manage pests in an economically and environmentally sound manner.</li>
+                        <li><strong>Disease Prevention and Control:</strong> Strategies beyond specific disease treatments, including sanitation, use of resistant varieties, and proper spacing.</li>
+                        <li><strong>Post-Harvest Handling:</strong> Techniques for harvesting, cleaning, sorting, packing, and storing bitter gourd to extend shelf life and maintain quality.</li>
+                        <li><strong>Market Strategies:</strong> Tips for selling produce, understanding market demands, and connecting with buyers.</li>
+                        <li><strong>Water Conservation:</strong> Techniques like mulching, drip irrigation, and rainwater harvesting to optimize water use.</li>
+                        <li><strong>Environmental Factors:</strong> Managing effects of temperature, humidity, and light on bitter gourd growth.</li>
+                        <li><strong>Specific Regional Practices:</strong> Any unique cultivation methods or challenges specific to different geographic locations.</li>
+                    </ul>
+                    <p>A holistic approach to these management aspects ensures long-term viability and profitability.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>
