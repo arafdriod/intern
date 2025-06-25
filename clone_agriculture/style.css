@@ -1,0 +1,331 @@
+html {
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color:#dfffe689;
+    width: 100%;
+  
+    overflow-x: hidden;
+   
+    margin: 0;
+    padding: 0;
+}
+.container-1st {
+    background-color: #e5fadb;
+    padding: 5px 0;
+    margin-bottom: 20px;
+    top: 0;
+    position: sticky;
+    z-index: 1000;
+}
+.container-1st h1 {
+    color: #28a745;
+    font-weight: bold;
+    text-align: center;
+}
+.container-2nd {
+    max-width: 1200px;
+   
+}
+.image img {
+    border-radius: 8px;
+    margin-bottom: 20px;
+
+    max-width: 100%;
+    height: auto;
+    display: block; 
+}
+.intro h1 {
+    color: #28a745;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.intro p {
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+.row-1st img {
+    border-radius: 8px;
+    margin-bottom: 20px;
+
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+.last h1 {
+    color: #28a745;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.last span {
+    border-bottom: 3px solid #28a745;
+    padding-bottom: 5px;
+}
+.last p {
+    line-height: 1.8;
+    color: #555;
+}
+
+.col-4 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: relative;
+
+    margin-bottom: 20px;
+}
+/* .col-4 .in {
+    margin-bottom: 30px;
+} */
+.col-md-4 .in, .offcanvas-body .in {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+    margin-top: 5px; /* Added margin-top for consistency */
+}
+.col-4 .form-control {
+    border-radius: 20px;
+    border-color: #28a745;
+}
+.col-4 .btn-outline-success {
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+}
+.col-4 .btn-outline-success:hover {
+    background-color: #218838;
+}
+.cata h1 {
+    color: #333;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    position: relative;
+}
+.cata h1::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: #28a745;
+    margin-top: 5px;
+}
+.cata ul {
+    list-style: none;
+    padding: 0;
+}
+.cata li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+    color: #555;
+    font-size: 1.1em;
+}
+.cata li:last-child {
+    border-bottom: none;
+}
+.cata li i {
+    margin-right: 10px;
+    color: #28a745;
+}
+.adds img {
+    border-radius: 8px;
+    margin-top: 20px;
+
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+a{
+text-decoration: none;
+}
+a:hover{
+color:#218838 ;
+text-decoration: underline;
+
+}
+
+/* crops */
+.crop-item {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.crop-image-wrapper {
+    width: 100%; 
+    padding-bottom: 100%; 
+    position: relative; 
+    overflow: hidden; 
+    border-radius: 10%; 
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+
+
+
+.crop-image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center; 
+    border-radius: 10%; 
+}
+
+.crop-item h3 {
+    font-size: 1.1em;
+    color: #333;
+    margin-top: 5px; 
+    text-transform: capitalize; 
+}
+
+.crop-item a {
+    text-decoration: none; 
+    color: inherit; 
+}
+.crop-item a:hover h3 {
+    color: #28a745; 
+}
+/* end */
+
+/* fruits */
+
+.fruit-item {
+    text-align: center;
+    margin-bottom: 30px; 
+}
+
+.fruit-item img {
+    width: 100%; 
+    aspect-ratio: 1 / 1; 
+    object-fit: cover; 
+    border-radius: 8px; 
+    display: block; 
+    margin: 0 auto; 
+}
+
+.fruit-item h3 {
+    color: #333;
+    font-size: 1.1em;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.fruit-item a {
+    text-decoration: none; 
+    color: inherit;
+}
+
+.fruit-item a:hover h3 {
+    color: #28a745; 
+}
+/* end */
+
+/* medicinal plants */
+.medicinal-plant-item {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.medicinal-plant-item img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
+.medicinal-plant-item h3 {
+    color: #333;
+    font-size: 1.1em;
+    margin-top: 10px;
+    font-weight: bold;
+    text-transform: capitalize; /* To make names consistent */
+}
+
+.medicinal-plant-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.medicinal-plant-item a:hover h3 {
+    color: #28a745;
+}
+/* end */
+
+/* ornamentals */
+
+.ornamental-plant-item {
+    text-align: center;
+    margin-bottom: 30px; /* Space between items */
+}
+
+.ornamental-plant-item img {
+    width: 100%; /* Make image fill its column */
+    aspect-ratio: 1 / 1; /* Force square aspect ratio */
+    object-fit: cover; /* Crop image to fit square, maintaining aspect ratio */
+    border-radius: 8px; /* Slightly rounded corners */
+    display: block; /* Remove extra space below images */
+    margin: 0 auto; /* Center the image if its container is wider */
+}
+
+.ornamental-plant-item h3 {
+    color: #333;
+    font-size: 1.1em;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.ornamental-plant-item a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit color from parent */
+}
+
+.ornamental-plant-item a:hover h3 {
+    color: #28a745; /* Change title color on hover */
+}
+/* end */
+/* vegetables */
+.vegetable-item {
+    text-align: center;
+    margin-bottom: 30px; /* Space between items */
+}
+
+.vegetable-item img {
+    width: 100%; /* Make image fill its column */
+    aspect-ratio: 1 / 1; /* Force square aspect ratio */
+    object-fit: cover; /* Crop image to fit square, maintaining aspect ratio */
+    border-radius: 8px; /* Slightly rounded corners */
+    display: block; /* Remove extra space below images */
+    margin: 0 auto; /* Center the image if its container is wider */
+}
+
+.vegetable-item h3 {
+    color: #333;
+    font-size: 1.1em;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.vegetable-item a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit color from parent */
+}
+
+.vegetable-item a:hover h3 {
+    color: #28a745; /* Change title color on hover */
+}
+/* end */

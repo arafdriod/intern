@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crops - Farming</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #dfffe689; /* Very light green/off-white */
+            width: 100%;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            margin: 0;
+            padding: 0;
+            color: #333; /* Default text color */
+        }
+
+        .container-1st {
+            background-color: #e5fadb; /* Light green */
+            padding: 10px 0;
+            margin-bottom: 30px;
+            top: 0;
+            position: sticky;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .container-1st h1 {
+            color: #28a745; /* Primary green */
+            font-weight: 700;
+            text-align: center;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .container-2nd {
+            max-width: 1300px; /* Slightly wider container */
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        /* Section with background image */
+        .intro-with-background {
+            background-image: url('/assets/project-6.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 80px 0; /* Vertical padding */
+            color: white; /* Text color for content over image */
+            position: relative;
+            z-index: 1; /* Ensure overlay works */
+            border-radius: 8px;
+            overflow: hidden; /* Keep content within bounds */
+            margin-bottom: 30px;
+        }
+
+        .intro-with-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.45); /* Darker overlay for better readability */
+            z-index: -1; /* Place behind content */
+        }
+
+        .intro {
+            padding: 0 20px; /* Horizontal padding for text within the background section */
+        }
+
+        .intro h1 {
+            color: white; /* Ensure heading is white */
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 2.2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Stronger text shadow */
+        }
+
+        .intro p {
+            line-height: 1.8;
+            color: #f0f0f0; /* Slightly off-white for paragraphs */
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+        }
+
+        .row-1st img {
+            border-radius: 8px;
+            margin-bottom: 20px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* Add subtle shadow to images */
+        }
+
+        .last {
+            padding-top: 20px; /* Add some space above the last section */
+        }
+
+        .last h1 {
+            color: #28a745;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .last span {
+            border-bottom: 4px solid #28a745; /* Thicker underline */
+            padding-bottom: 8px;
+        }
+
+        .last p {
+            line-height: 1.9; /* Increased line height for better readability */
+            color: #555;
+            font-size: 1.05em;
+        }
+
+        /* Sidebar content styling (for both column and offcanvas) */
+        .col-md-4 .in, .offcanvas-body .in {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+            margin-top: 20px; /* Added margin-top for consistency */
+        }
+        
+        .col-md-4 .cata, .offcanvas-body .cata {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        .col-md-4 .form-control, .offcanvas-body .form-control {
+            border-radius: 25px; /* More rounded */
+            border: 1px solid #28a745;
+            padding: 10px 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        .col-md-4 .form-control:focus, .offcanvas-body .form-control:focus {
+            border-color: #218838;
+            box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+        }
+
+        .col-md-4 .btn-outline-success, .offcanvas-body .btn-outline-success {
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 25px; /* More rounded */
+            border: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .col-md-4 .btn-outline-success:hover, .offcanvas-body .btn-outline-success:hover {
+            background-color: #218838;
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+
+        .cata h1 {
+            color: #333;
+            font-size: 1.5em; /* Slightly larger */
+            font-weight: 600; /* Semi-bold */
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px; /* Space for the underline */
+        }
+
+        .cata h1::after {
+            content: '';
+            display: block;
+            width: 50px; /* Wider underline */
+            height: 4px; /* Thicker underline */
+            background-color: #28a745;
+            margin-top: 5px;
+            border-radius: 2px;
+        }
+
+        .cata ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cata li {
+            padding: 12px 0; /* More vertical padding */
+            border-bottom: 1px dashed #eee;
+            color: #555;
+            font-size: 1.1em;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .cata li:last-child {
+            border-bottom: none;
+        }
+
+        .cata li i {
+            margin-right: 12px; /* More space for icon */
+            color: #28a745;
+            font-size: 1.1em;
+        }
+
+        .cata li:hover {
+            color: #218838; /* Darker green on hover */
+            transform: translateX(5px); /* Slide effect */
+        }
+
+        .adds img {
+            border-radius: 8px;
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* Add subtle shadow to ads */
+        }
+        .adds-a img {
+            border-radius: 8px;
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit; /* Inherit color from parent by default */
+        }
+
+        a:hover {
+            color: #218838;
+            text-decoration: none; /* Remove default underline, rely on li hover */
+        }
+
+        /* Offcanvas specific styling */
+        .offcanvas {
+            background-color: #f8fcf9; /* Lighter background for offcanvas */
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+        }
+        .offcanvas-header {
+            background-color: #e5fadb;
+            border-bottom: 1px solid #d4ecd8;
+        }
+        .offcanvas-title {
+            color: #28a745;
+            font-weight: 600;
+        }
+        
+        /* Hide offcanvas trigger button on medium and larger screens */
+        @media (min-width: 768px) {
+            .d-md-none {
+                display: none !important;
+            }
+        }
+        /* Show offcanvas content as a regular column on medium and larger screens */
+        @media (max-width: 767.98px) {
+            .offcanvas.d-md-block {
+                display: none !important; /* Hide the default offcanvas on small screens */
+            }
+            /* Add some padding to the main content when sidebar is hidden on small screens */
+            .col-md-8 {
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+            .offcanvas-trigger-btn {
+                margin-bottom: 20px; /* Space for the button */
+                margin-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid border container-1st">
+        <div class="row">
+            <div class="col">
+                <h1>Crops</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container container-2nd">
+        <div class="row">
+            <div class="col-md-8"> 
+                <div class="intro-with-background" data-aos="fade-up-right">
+                    <div class="intro">
+                        <h1>Introducing basic Crops</h1>
+                        <p>Basic crops are plants cultivated for food, feed, fiber, or other uses. They are categorized into food crops (like wheat, rice, and corn), feed crops (for livestock), fiber crops (like cotton), oil crops, ornamental crops, and industrial crops (like rubber). Crops form the foundation of agriculture and are essential for food production and various industries.
+                            <br>Here's a more detailed look:
+                            <br>1. Food Crops: These are the primary source of sustenance for humans and include:
+                            <br>Grains: Wheat, rice, corn, barley, oats, rye, millet, and sorghum are staples in many diets.
+                            <br>Fruits: Apples, bananas, oranges, grapes, and many others provide essential vitamins and nutrients.
+                            <br>Vegetables: Potatoes, carrots, tomatoes, spinach, and a wide variety of other vegetables offer diverse nutritional benefits.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row row-1st" >
+                    <div class="col-md-6" data-aos="fade-right"> 
+                        <img class="img-fluid" src="/assets/post-7.jpg" alt="Post 7 Image">
+                    </div>
+                    <div class="col-md-6" data-aos="fade-left"> 
+                        <img class="img-fluid" src="/assets/post-3.jpg" alt="Post 3 Image">
+                    </div>
+                </div>
+
+                <div class="last" data-aos="fade-up"> 
+                    <h1><span>Solutions and Benefits</span></h1>
+                    <p>Crops offer numerous solutions and benefits, including food security, economic opportunities, and environmental sustainability. They provide the primary source of sustenance for humans and livestock, contributing to food security. Additionally, agriculture is a major economic driver, providing jobs and income for billions of people worldwide. Furthermore, sustainable farming practices like cover cropping can improve soil health, reduce pollution, and mitigate climate change. </p>
+                </div>
+            </div>
+
+            <div class="col-12 d-md-none text-center">
+                <button class="btn btn-success offcanvas-trigger-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#categoriesOffcanvas" aria-controls="categoriesOffcanvas">
+                    <i class="fas fa-bars me-2"></i> Show Categories
+                </button>
+            </div>
+
+            <div class="col-md-4 d-none d-md-block" data-aos="fade-up-right"> 
+                <div class="in">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="cata mt-2" data-aos="fade-up">
+                    <a href="index.html"> <h1>CATEGORIES</h1></a> 
+                    <ul>
+                        <a href="crops.html"><li><i class="fa-solid fa-wheat-awn"></i>Crops</li></a> 
+                        <a href="fruits.html"><li><i class="fa-solid fa-wheat-awn"></i> Fruits</li></a>
+                        <a href="Medicinal Plants.html"><li><i class="fa-solid fa-wheat-awn"></i>Medicinal Plants</li></a> 
+                        <a href="Ornamentals.html"><li><i class="fa-solid fa-wheat-awn"></i>Ornamentals</li></a> 
+                        <a href="Vegetables.html"><li><i class="fa-solid fa-wheat-awn"></i>Vegetables</li></a> 
+                    </ul>
+                </div>
+                <div class="adds mt-5" data-aos="fade-up" >
+                    <img class="img-fluid" src="/assets/banner-add.jpg" alt="Banner Ad">
+                </div>
+                <div class="adds-a mt-5" data-aos="fade-up">
+                    <img class="img-fluid" src="/assets/Farm Product Flyer design.jpeg" alt="Farm Product Flyer Design">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="categoriesOffcanvas" aria-labelledby="offcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasLabel">Categories</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="in">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+            <div class="cata mt-2">
+                <a href="index.html"> <h1>CATEGORIES</h1></a> 
+                <ul>
+                    <a href="crops.html"><li><i class="fa-solid fa-wheat-awn"></i>Crops</li></a> 
+                    <a href="fruits.html"><li><i class="fa-solid fa-wheat-awn"></i> Fruits</li></a>
+                    <a href="Medicinal Plants.html"><li><i class="fa-solid fa-wheat-awn"></i>Medicinal Plants</li></a> 
+                    <a href="Ornamentals.html"><li><i class="fa-solid fa-wheat-awn"></i>Ornamentals</li></a> 
+                    <a href="Vegetables.html"><li><i class="fa-solid fa-wheat-awn"></i>Vegetables</li></a> 
+                </ul>
+            </div>
+            <div class="adds mt-5">
+                <img class="img-fluid" src="/assets/banner-add.jpg" alt="Banner Ad">
+            </div>
+            <div class="adds-a mt-5">
+                <img class="img-fluid" src="/assets/Farm Product Flyer design.jpeg" alt="Farm Product Flyer Design">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init({
+            duration: 1000, /* Global duration for animations */
+            once: true /* Whether animation should happen only once - off by default */
+        });
+    </script>
+</body>
+</html>
